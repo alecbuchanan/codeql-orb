@@ -7,4 +7,5 @@ rm codeql.zip
 
 # Add the CodeQL CLI to the PATH
 echo "export PATH=\$PATH:/usr/local/bin/codeql-linux64" >> "$BASH_ENV"
+# shellcheck source=/dev/null
 source "$BASH_ENV"

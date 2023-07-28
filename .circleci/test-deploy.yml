@@ -28,7 +28,7 @@ jobs:
     steps:
       - checkout
       # Run your orb's commands to validate them.
-      - codeql-orb/greet
+      - codeql-orb/init
 workflows:
   test-deploy:
     jobs:
