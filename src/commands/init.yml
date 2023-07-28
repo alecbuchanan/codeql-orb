@@ -1,0 +1,13 @@
+description: >
+  This command downloads and installs the CodeQL CLI for use on CircleCI
+# What will this command do?
+# Descriptions should be short, simple, and clear.
+# parameters:
+#   to:
+#     type: string
+#     default: "World"
+#     description: "Hello to whom?"
+steps:
+  - run:
+      name: Download and install CodeQL CLI
+      command: <<include(scripts/download_cli.sh)>>
