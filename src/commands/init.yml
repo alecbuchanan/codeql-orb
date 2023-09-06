@@ -19,4 +19,3 @@ steps:
       paths:
         - /usr/local/codeql-runner-linux64
       when: << pipeline.parameters.cache >>
-      
