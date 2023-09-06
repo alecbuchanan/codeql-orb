@@ -2,12 +2,12 @@ description: >
   This command downloads and installs the CodeQL CLI for use on CircleCI
 # What will this command do?
 # Descriptions should be short, simple, and clear.
-parameters:
+steps:
+  parameters:
   cache:
     type: boolean
     default: false
     description: "Store CodeQL Bundle in CircleCI cache for faster builds"
-steps:
   - restore_cache:
       keys:
         - codeql-bundle-{{ checksum "scripts/download_bundle.sh" }}
