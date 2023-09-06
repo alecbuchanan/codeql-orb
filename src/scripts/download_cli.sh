@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Download and extract the CodeQL bundle
-sudo curl -L https://github.com/github/codeql/releases/latest/download/codeql-bundle.tar.gz -o codeql-bundle.tar.gz
+sudo curl -L https://github.com/github/codeql-action/releases/latest/download/codeql-bundle.tar.gz -o codeql-bundle.tar.gz
 sudo tar -xzf codeql-bundle.tar.gz -C /usr/local/
 sudo rm codeql-bundle.tar.gz
 
