@@ -15,8 +15,8 @@ steps:
   - run:
       name: Download and install latest CodeQL Bundle
       command: <<include(scripts/download_bundle.sh)>>
-      when: |
-        not checksum("./src/scripts/download_bundle.sh")
+      # when: |
+      #   not checksum("./src/scripts/download_bundle.sh")
   - save_cache:
       key: codeql-bundle-{{ checksum "./src/scripts/download_bundle.sh" }}
       paths:
