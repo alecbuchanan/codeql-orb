@@ -11,12 +11,12 @@ description: >
 steps:
   - restore_cache:
       keys:
-        - codeql-bundle-{{ checksum "scripts/download_bundle.sh" }}
+        - codeql-bundle-{{ checksum "./scripts/download_bundle.sh" }}
   - run:
       name: Download and install latest CodeQL Bundle
       command: <<include(scripts/download_bundle.sh)>>
   - save_cache:
-      key: codeql-bundle-{{ checksum "scripts/download_bundle.sh" }}
+      key: codeql-bundle-{{ checksum "./scripts/download_bundle.sh" }}
       paths:
         - /usr/local/codeql-runner-linux64
       # when: << parameters.cache >>
