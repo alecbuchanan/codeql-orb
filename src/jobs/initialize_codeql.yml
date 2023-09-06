@@ -4,7 +4,7 @@ description: >
 
 executor: default
 
-parameters:
+# parameters:
   # cache:
   #   type: boolean
   #   default: false
