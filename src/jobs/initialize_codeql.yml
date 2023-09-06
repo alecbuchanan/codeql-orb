@@ -10,4 +10,5 @@ executor: default
 #     default: "World"
 #     description: "Hello to whom?"
 steps:
-  - init
+  - init:
+      cache: true
