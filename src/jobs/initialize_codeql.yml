@@ -4,11 +4,12 @@ description: >
 
 executor: default
 
-# parameters:
-#   to:
-#     type: string
-#     default: "World"
-#     description: "Hello to whom?"
+parameters:
+  cache:
+    type: boolean
+    default: false
+    description: "Store CodeQL Bundle in CircleCI cache for faster builds"
+
 steps:
   - init:
-      cache: true
+      cache: << parameters.cache >>
