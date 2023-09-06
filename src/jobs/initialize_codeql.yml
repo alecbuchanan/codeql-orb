@@ -1,15 +1,15 @@
 description: >
-  Initializes the CodeQL CLI
+  Initializes the CodeQL Bundle
 # What will this job do?
 
 executor: default
 
 parameters:
-  cache:
-    type: boolean
-    default: false
-    description: "Store CodeQL Bundle in CircleCI cache for faster builds"
+  # cache:
+  #   type: boolean
+  #   default: false
+  #   description: "Store CodeQL Bundle in CircleCI cache for faster builds"
 
 steps:
-  - init:
-      cache: << parameters.cache >>
+  - init
+      # cache: << parameters.cache >>
