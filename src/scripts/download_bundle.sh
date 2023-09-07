@@ -4,9 +4,7 @@
 wget https://github.com/github/codeql-action/releases/latest/download/codeql-bundle-linux64.tar.gz -O codeql-bundle-linux64.tar.gz
 sudo tar -xzvf codeql-bundle-linux64.tar.gz -C /usr/local/
 rm codeql-bundle-linux64.tar.gz
-export PATH=$(pwd)/codeql:$PATH
 
-# # Add the CodeQL CLI to the PATH
-# # Add the CodeQL CLI to the PATH
-# echo "export PATH=\$PATH:/usr/local/codeql-runner-linux64" > codeql-path.sh
-# source codeql-path.sh
+# Add the CodeQL CLI to the PATH
+CODEQL_PATH=$(pwd)/codeql
+export PATH="$CODEQL_PATH:$PATH"
