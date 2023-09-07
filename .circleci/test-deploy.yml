@@ -31,7 +31,7 @@ jobs:
       - node/install
       # Run your orb's commands to validate them.
       - codeql-orb/init
-      - codeql-orb/create-database
+      - codeql-orb/create_database
       - codeql-orb/analyze
 
 workflows:
