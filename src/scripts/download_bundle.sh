@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Download and extract the CodeQL bundle
-sudo curl -L https://github.com/github/codeql-action/releases/latest/download/codeql-bundle.tar.gz -o codeql-bundle.tar.gz
-sudo tar -xzf codeql-bundle.tar.gz -C /usr/local/
-sudo rm codeql-bundle.tar.gz
+wget https://github.com/github/codeql-action/releases/latest/download/codeql-bundle-linux64.tar.gz -o codeql-bundle-linux64.tar.gz
+tar -xzvf codeql-bundle.tar.gz -C /usr/local/
+rm codeql-bundle.tar.gz
 
 # Add the CodeQL CLI to the PATH
 echo "export PATH=\$PATH:/usr/local/codeql-runner-linux64" | sudo tee -a "$BASH_ENV" > /dev/null
