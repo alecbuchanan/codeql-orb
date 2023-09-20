@@ -33,6 +33,14 @@ jobs:
       - codeql-orb/init
       - codeql-orb/create_database
       - codeql-orb/analyze
+      - when: 
+          condition: ${CIRCLE_PULL_REQUEST}
+          steps:
+            - codeql-orb/upload_pr_results
+      - unless:
+          condition: ${CIRCLE_PULL_REQUEST}
+          steps:
+            - codeql-orb/upload_results      
 
 workflows:
   test-deploy:
