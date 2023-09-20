@@ -1,0 +1,11 @@
+description: >
+  This command uploads CodeQL Sarif Results to the related Pull Request on GitHub
+# Create CodeQL Database
+# Create a CodeQL database for a source tree that can be analyzed using one of the CodeQL products.
+# Note that if the --command flag is omitted for compiled languages, the AutoBuilder will be used.
+# Full documentation for database create step: https://codeql.github.com/docs/codeql-cli/manual/database-create/
+
+steps:
+  - run:
+      name: Upload CodeQL Results
+      command: <<include(scripts/upload_pr_results.sh)>>

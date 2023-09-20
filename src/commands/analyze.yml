@@ -1,0 +1,11 @@
+description: >
+  This command runs the CodeQL Analysis
+# Analyze a CodeQL database, producing meaningful results in the context of the source code.
+# Run a query suite (or some individual queries) against a CodeQL database, producing results, styled as alerts or paths, in SARIF or another interpreted format.
+# Note that the suite argument can accept one of the pre-compiled, out-of-the-box query suites: code-scanning, security-extended, or security-and-quality
+# Full documentation for database analyze step: https://codeql.github.com/docs/codeql-cli/manual/database-analyze/
+
+steps:
+  - run:
+      name: Download and install latest CodeQL Bundle
+      command: <<include(scripts/analyze.sh)>>

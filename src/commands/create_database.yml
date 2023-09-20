@@ -1,0 +1,11 @@
+description: >
+  This command downloads and installs the CodeQL Bundle for use on CircleCI
+# Create CodeQL Database
+# Create a CodeQL database for a source tree that can be analyzed using one of the CodeQL products.
+# Note that if the --command flag is omitted for compiled languages, the AutoBuilder will be used.
+# Full documentation for database create step: https://codeql.github.com/docs/codeql-cli/manual/database-create/
+
+steps:
+  - run:
+      name: Create CodeQL Database
+      command: <<include(scripts/create_database.sh)>>

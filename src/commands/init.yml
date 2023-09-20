@@ -1,0 +1,24 @@
+description: >
+  This command downloads and installs the CodeQL Bundle for use on CircleCI
+# What will this command do?
+# Descriptions should be short, simple, and clear.
+# parameters:
+#   cache:
+#     type: boolean
+#     default: false
+#     description: "Store CodeQL Bundle in CircleCI cache for faster builds"
+
+steps:
+  - restore_cache:
+      keys:
+        - codeql-bundle-{{ checksum "./src/scripts/download_bundle.sh" }}
+  - run:
+      name: Download and install latest CodeQL Bundle
+      command: <<include(scripts/download_bundle.sh)>>
+      # when: |
+      #   not checksum("./src/scripts/download_bundle.sh")
+  - save_cache:
+      key: codeql-bundle-{{ checksum "./src/scripts/download_bundle.sh" }}
+      paths:
+        - /usr/local/codeql-runner-linux64
+      # when: << parameters.cache >>
