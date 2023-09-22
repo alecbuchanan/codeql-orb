@@ -19,6 +19,6 @@ steps:
       #   not checksum("./src/scripts/download_bundle.sh")
   - save_cache:
       key: codeql-bundle-{{ checksum "./src/scripts/download_bundle.sh" }}
-      paths:
-        - /usr/local/codeql-runner-linux64
+      # paths:
+      #   - /usr/local/codeql-runner-linux64
       # when: << parameters.cache >>
