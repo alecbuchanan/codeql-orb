@@ -1,5 +1,5 @@
 description: >
-  This command uploads CodeQL Sarif Results to the associated repository on GitHub
+  This command uploads CodeQL Sarif Results to the associated repository on GitHub, and the PR if applicable
 # Create CodeQL Database
 # Create a CodeQL database for a source tree that can be analyzed using one of the CodeQL products.
 # Note that if the --command flag is omitted for compiled languages, the AutoBuilder will be used.
