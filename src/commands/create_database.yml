@@ -1,0 +1,16 @@
+description: >
+  This command creates a CodeQL database for the specified language.
+# What will this command do?
+# Descriptions should be short, simple, and clear.
+
+parameters:
+  language:
+    description: The programming language for which the CodeQL database is to be created.
+    type: string
+
+steps:
+  - run:
+      name: Create CodeQL Database
+      command: |
+        mkdir -p codeql-dbs
+        ./codeql/codeql database create ./codeql-dbs/repo-db --language=${{ parameters.language }} --source-root=./my-app

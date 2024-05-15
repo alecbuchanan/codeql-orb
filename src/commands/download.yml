@@ -1,0 +1,13 @@
+description: >
+  This command downloads the CodeQL CLI and sets it up for use in your project.
+# What will this command do?
+# Descriptions should be short, simple, and clear.
+
+steps:
+  - run:
+      name: Download CodeQL CLI
+      command: |
+        wget https://github.com/github/codeql-action/releases/latest/download/codeql-bundle-linux64.tar.gz -O codeql-bundle-linux64.tar.gz
+        tar xzvf codeql-bundle-linux64.tar.gz
+        rm codeql-bundle-linux64.tar.gz
+        export PATH=$(pwd)/codeql:$PATH

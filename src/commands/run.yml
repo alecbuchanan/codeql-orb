@@ -1,0 +1,16 @@
+description: >
+  This command runs CodeQL analysis on your codebase.
+# What will this command do?
+# Descriptions should be short, simple, and clear.
+
+parameters:
+  language:
+    description: The programming language for which the CodeQL database is to be created.
+    type: string
+
+steps:
+  - run:
+      name: Analyze CodeQL Database
+      command: |
+        cd codeql && mkdir temp
+        ./codeql database analyze ../codeql-dbs/repo-db javascript-code-scanning.qls --format=sarif-latest --output=./temp/results-js.sarif                      
