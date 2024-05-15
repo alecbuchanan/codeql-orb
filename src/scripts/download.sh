@@ -9,5 +9,6 @@ tar xzvf codeql-bundle-linux64.tar.gz
 # Remove the tar.gz file after extraction
 rm codeql-bundle-linux64.tar.gz
 
-# Add the CodeQL directory to the PATH
-export PATH=$(pwd)/codeql:$PATH
+# Declare the CODEQL_DIR variable and assign it separately to avoid masking values
+CODEQL_DIR=$(pwd)/codeql
+export PATH=$CODEQL_DIR:$PATH
