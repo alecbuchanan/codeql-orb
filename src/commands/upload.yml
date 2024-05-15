@@ -23,12 +23,12 @@ parameters:
     description: "GitHub URL, useful for GitHub Enterprise with a custom URL."
 steps:
   - when:
-      condition: << pipeline.parameters.CIRCLE_PULL_REQUEST >>
+      condition: ${CIRCLE_PULL_REQUEST}
       steps:
         - run:
             name: "Upload CodeQL Results for PR"
             command: |
-              echo $<< parameters.github_token >> | << parameters.codeql_path >> github upload-results \
+              echo $GITHUB_TOKEN | << parameters.codeql_path >> github upload-results \
                 --repository=<< parameters.repository >> \
                 --ref=refs/pull/${CIRCLE_PULL_REQUEST##*/}/head \
                 --commit=$CIRCLE_SHA1 \
@@ -36,7 +36,7 @@ steps:
                 --github-url=<< parameters.github_url >> \
                 --github-auth-stdin
   - unless:
-      condition: << pipeline.parameters.CIRCLE_PULL_REQUEST >>
+      condition: ${CIRCLE_PULL_REQUEST}
       steps:
         - run:
             name: "Upload CodeQL Results for Branch"
