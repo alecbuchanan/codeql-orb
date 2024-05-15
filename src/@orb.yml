@@ -1,7 +1,7 @@
 version: 2.1
 
 description: >
-  Use this orb to run CodeQL analysis on your codebase.
+  Use this orb to run CodeQL analysis on your codebase. This orb provides commands to download the CodeQL CLI, create a CodeQL database, and run CodeQL analysis.
 # What will your orb allow users to accomplish?
 # Descriptions should be short, simple, and informative.
 

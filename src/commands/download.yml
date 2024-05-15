@@ -6,8 +6,4 @@ description: >
 steps:
   - run:
       name: Download CodeQL CLI
-      command: |
-        wget https://github.com/github/codeql-action/releases/latest/download/codeql-bundle-linux64.tar.gz -O codeql-bundle-linux64.tar.gz
-        tar xzvf codeql-bundle-linux64.tar.gz
-        rm codeql-bundle-linux64.tar.gz
-        export PATH=$(pwd)/codeql:$PATH
+      command: <<include(scripts/download.sh)>>

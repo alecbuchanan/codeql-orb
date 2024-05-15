@@ -11,6 +11,4 @@ parameters:
 steps:
   - run:
       name: Create CodeQL Database
-      command: |
-        mkdir -p codeql-dbs
-        ./codeql/codeql database create ./codeql-dbs/repo-db --language=${{ parameters.language }} --source-root=./my-app
+      command: <<include(scripts/create_database.sh)>>
