@@ -11,6 +11,6 @@ parameters:
 steps:
   - run:
       environment:
-        LANGUAGE: << parameters.language >>
+        language: << parameters.language >>
       name: Create CodeQL Database
       command: <<include(scripts/create_database.sh)>>
