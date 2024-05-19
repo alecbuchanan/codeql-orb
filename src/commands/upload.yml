@@ -6,7 +6,7 @@ parameters:
     default: "./codeql/codeql"
   sarif_file_path:
     type: string
-    default: "./temp/results-js.sarif"
+    default: "./codeql/temp/results-js.sarif"
   github_url:
     type: string
     default: "https://github.com/"
