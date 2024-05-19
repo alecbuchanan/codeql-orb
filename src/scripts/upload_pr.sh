@@ -13,8 +13,8 @@ if "${CODEQL_DIR}/codeql" github upload-results \
                 --commit="$CIRCLE_SHA1" \
                 --sarif="$SARIF_FILE_PATH" \
                 --github-url="https://github.com/" \
-                --github-auth-stdin <<< "$GITHUB_TOKEN"
-                echo "Successfully uploaded SARIF file to GitHub."
+                --github-auth-stdin <<< "$GITHUB_TOKEN"; then
+    echo "Successfully uploaded SARIF file to GitHub."
 else
     echo "Failed to upload SARIF file to GitHub."
     exit 1
