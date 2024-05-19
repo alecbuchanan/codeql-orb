@@ -11,7 +11,7 @@ if [ -z "$LANGUAGE_IDENTIFIER" ]; then
 fi
 
 # Run the CodeQL database analyze command
-./codeql database analyze ../codeql-dbs/repo-db --format=sarif-latest --output=./temp/results-"$LANGUAGE_IDENTIFIER".sarif
+./codeql database analyze ./codeql-dbs/repo-db --format=sarif-latest --output=./temp/results-"$LANGUAGE_IDENTIFIER".sarif
 
 # Print the full path of the SARIF file for debugging
 echo "SARIF file location: $(pwd)/temp/results-$LANGUAGE_IDENTIFIER.sarif"
