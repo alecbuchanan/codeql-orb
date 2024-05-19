@@ -1,7 +1,5 @@
 description: >
   This command runs CodeQL analysis on your codebase.
-# What will this command do?
-# Descriptions should be short, simple, and clear.
 
 parameters:
   language_identifier:

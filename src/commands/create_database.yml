@@ -1,7 +1,5 @@
 description: >
   This command creates a CodeQL database for the specified language.
-# What will this command do?
-# Descriptions should be short, simple, and clear.
 
 parameters:
   language_identifier:

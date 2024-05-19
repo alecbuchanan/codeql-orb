@@ -1,12 +1,9 @@
 description: >
   This command downloads the CodeQL CLI and sets it up for use in your project.
-# What will this command do?
-# Descriptions should be short, simple, and clear.
 
-# Add a CODEQL Directory parameter to allow users to specify the directory where the CodeQL CLI should be downloaded.
 parameters:
   codeql_directory:
-    description: The directory where the CodeQL CLI should be downloaded.
+    description: The directory on the runner where the CodeQL CLI should be downloaded.
     type: string
     default: "/home/circleci/codeql"
 
