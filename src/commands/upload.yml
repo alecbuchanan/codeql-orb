@@ -21,7 +21,7 @@ steps:
             name: "Upload CodeQL Results for PR"
             command: |
               echo "Extracted Repository: $repo"
-              echo $GITHUB_TOKEN | << parameters.codeql_path >> github upload-results \
+              echo -n $GITHUB_TOKEN | << parameters.codeql_path >> github upload-results \
                 --repository=$repo \
                 --ref=refs/pull/${CIRCLE_PULL_REQUEST##*/}/head \
                 --commit=$CIRCLE_SHA1 \
@@ -35,7 +35,7 @@ steps:
             name: "Upload CodeQL Results for Branch"
             command: |
               echo "Extracted Repository: $repo"
-              echo $GITHUB_TOKEN | << parameters.codeql_path >> github upload-results \
+              echo -n $GITHUB_TOKEN | << parameters.codeql_path >> github upload-results \
                 --repository=$repo \
                 --ref=refs/heads/${CIRCLE_BRANCH} \
                 --commit=$CIRCLE_SHA1 \
