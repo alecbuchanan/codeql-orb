@@ -20,13 +20,13 @@ steps:
         - run:
             name: "Upload CodeQL Results for PR"
             command: |
-              \<< parameters.codeql_path \>> github upload-results \
+              << parameters.codeql_path >> github upload-results \
                 --repository=$repo \
                 --ref=refs/pull/${CIRCLE_PULL_REQUEST##*/}/head \
                 --commit=$CIRCLE_SHA1 \
                 --sarif=<< parameters.sarif_file_path >> \
                 --github-url=<< parameters.github_url >> \
-                --github-auth-stdin <<< "$GITHUB_TOKEN"
+                --github-auth-stdin \<<< "$GITHUB_TOKEN"
 
   - unless:
       condition: ${CIRCLE_PULL_REQUEST}
@@ -34,10 +34,10 @@ steps:
         - run:
             name: "Upload CodeQL Results for Branch"
             command: |
-              \<< parameters.codeql_path \>> github upload-results \
+              << parameters.codeql_path >> github upload-results \
                 --repository=$repo \
                 --ref=refs/heads/${CIRCLE_BRANCH} \
                 --commit=$CIRCLE_SHA1 \
                 --sarif=<< parameters.sarif_file_path >> \
                 --github-url=<< parameters.github_url >> \
-                --github-auth-stdin <<< "$GITHUB_TOKEN"
+                --github-auth-stdin \<<< "$GITHUB_TOKEN"
