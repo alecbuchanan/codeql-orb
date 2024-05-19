@@ -20,7 +20,7 @@ steps:
             name: "Upload CodeQL Results for PR"
             command: |
               echo $GITHUB_TOKEN | << parameters.codeql_path >> github upload-results \
-                --repository=${CIRCLE_PROJECT_REPONAME} \
+                --repository=${CIRCLE_ORGANIZATION_ID}/${CIRCLE_PROJECT_REPONAME} \
                 --ref=refs/pull/${CIRCLE_PULL_REQUEST##*/}/head \
                 --commit=$CIRCLE_SHA1 \
                 --sarif=<< parameters.sarif_file_path >> \
@@ -33,7 +33,7 @@ steps:
             name: "Upload CodeQL Results for Branch"
             command: |
               echo $GITHUB_TOKEN | << parameters.codeql_path >> github upload-results \
-                --repository=${CIRCLE_PROJECT_REPONAME} \
+                --repository=${CIRCLE_ORGANIZATION_ID}/${CIRCLE_PROJECT_REPONAME} \
                 --ref=refs/heads/${CIRCLE_BRANCH} \
                 --commit=$CIRCLE_SHA1 \
                 --sarif=<< parameters.sarif_file_path >> \
