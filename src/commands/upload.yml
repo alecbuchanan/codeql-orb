@@ -12,9 +12,6 @@ parameters:
     default: "https://github.com/"
 steps:
   - run:
-      name: "Print Working Directory"
-      command: pwd
-  - run:
       name: "Extract Repository Information"
       command: <<include(scripts/parse_repository.sh)>>
   - when:
@@ -23,7 +20,6 @@ steps:
         - run:
             name: "Upload CodeQL Results for PR"
             command: |
-              echo "Repository: $CIRCLE_REPOSITORY_URL"
               echo $GITHUB_TOKEN | << parameters.codeql_path >> github upload-results \
                 --repository=$repo \
                 --ref=refs/pull/${CIRCLE_PULL_REQUEST##*/}/head \
@@ -37,7 +33,6 @@ steps:
         - run:
             name: "Upload CodeQL Results for Branch"
             command: |
-              echo "Repository: $CIRCLE_REPOSITORY_URL"
               echo $GITHUB_TOKEN | << parameters.codeql_path >> github upload-results \
                 --repository=$repo \
                 --ref=refs/heads/${CIRCLE_BRANCH} \
