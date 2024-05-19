@@ -40,3 +40,4 @@ steps:
                 --sarif=<< parameters.sarif_file_path >> \
                 --github-url=<< parameters.github_url >> \
                 --github-auth-stdin
+                
