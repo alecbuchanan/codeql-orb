@@ -22,3 +22,4 @@ export PATH="$CODEQL_DIR:$PATH"
 echo "export PATH=\"/home/circleci/codeql:\$PATH\"" >> ~/.bashrc
 
 # Now you can run the CodeQL executable directly with 'codeql'
+codeql --version
