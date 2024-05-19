@@ -16,9 +16,7 @@ steps:
       command: pwd
   - run:
       name: "Extract Repository Information"
-      command: |
-        repo=$(echo $CIRCLE_REPOSITORY_URL | awk -F'[:/]' '{print $2"/"$3}' | sed 's/\.git$//')
-        echo "Extracted Repository: $repo"
+      command: <<include(scripts/parse_repository.sh)>>
   - when:
       condition: ${CIRCLE_PULL_REQUEST}
       steps:
