@@ -4,9 +4,7 @@ parameters:
   codeql_path:
     type: string
     default: "/home/circleci/codeql/codeql"
-  github_url:
-    type: string
-    default: "https://github.com/"
+
 steps:
   - run:
       name: "Extract Repository Information"
@@ -22,7 +20,7 @@ steps:
                 --ref=refs/pull/${CIRCLE_PULL_REQUEST##*/}/head \
                 --commit=$CIRCLE_SHA1 \
                 --sarif=$SARIF_FILE_PATH \
-                --github-url=<< parameters.github_url >> \
+                --github-url=https://github.com/ \
                 --github-auth-stdin \<<< "$GITHUB_TOKEN"
 
   - unless:
@@ -36,5 +34,5 @@ steps:
                 --ref=refs/heads/${CIRCLE_BRANCH} \
                 --commit=$CIRCLE_SHA1 \
                 --sarif=$SARIF_FILE_PATH \
-                --github-url=<< parameters.github_url >> \
+                --github-url=https://github.com/ \
                 --github-auth-stdin \<<< "$GITHUB_TOKEN"
