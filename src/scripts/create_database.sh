@@ -12,4 +12,4 @@ fi
 mkdir -p codeql-dbs
 
 # Use the language from the environment variable to create a CodeQL database
-./codeql/codeql database create ./codeql-dbs/repo-db --language="$LANGUAGE_IDENTIFIER" --source-root=./my-app
+codeql database create ./codeql-dbs/repo-db --language="$LANGUAGE_IDENTIFIER"

@@ -26,7 +26,7 @@ jobs:
     docker:
       - image: cimg/base:current
     steps:
-      - checkout: { path: "my-app" }
+      - checkout
       # Run your orb's commands to validate them.
       - codeql/download_codeql
       - codeql/create_database:
