@@ -1,7 +1,5 @@
 description: >
   Uploads CodeQL analysis results to GitHub, differentiating between pull request and branch builds.
-# What will this command do?
-# Descriptions should be short, simple, and clear.
 parameters:
   codeql_path:
     type: string
@@ -13,6 +11,9 @@ parameters:
     type: string
     default: "https://github.com/"
 steps:
+  - run:
+      name: "Print Working Directory"
+      command: pwd
   - when:
       condition: ${CIRCLE_PULL_REQUEST}
       steps:
