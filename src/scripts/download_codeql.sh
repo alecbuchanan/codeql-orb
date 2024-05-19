@@ -19,6 +19,6 @@ rm codeql-bundle-linux64.tar.gz
 export PATH="$CODEQL_DIR:$PATH"
 
 # Make the PATH change persistent across sessions by adding it to ~/.bashrc
-echo 'export PATH="/home/circleci/codeql:$PATH"' >> ~/.bashrc
+echo "export PATH=\"/home/circleci/codeql:\$PATH\"" >> ~/.bashrc
 
 # Now you can run the CodeQL executable directly with 'codeql'
