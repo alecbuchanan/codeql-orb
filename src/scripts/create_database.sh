@@ -6,10 +6,11 @@ if [ -z "$LANGUAGE_IDENTIFIER" ]; then
     exit 1
 fi
 
-# Use the LANGUAGE_IDENTIFIER environment variable directly without assigning it to another variable
+# Navigate to $CODEQL_DIR before creating the CodeQL databases directory
+cd "$CODEQL_DIR" || exit 1
 
 # Create the directory for CodeQL databases if it doesn't already exist
 mkdir -p codeql-dbs
 
 # Use the language from the environment variable to create a CodeQL database
-codeql database create ./codeql-dbs/repo-db --language="$LANGUAGE_IDENTIFIER"
+./codeql/codeql database create ./codeql-dbs/repo-db --language="$LANGUAGE_IDENTIFIER" --source-root /home/circleci/project
