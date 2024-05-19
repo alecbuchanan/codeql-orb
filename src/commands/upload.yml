@@ -20,8 +20,7 @@ steps:
         - run:
             name: "Upload CodeQL Results for PR"
             command: |
-              repo=$(echo $CIRCLE_REPOSITORY_URL | cut -d'/' -f4,5 | sed 's/\.git$//')
-              echo "Repository: $repo"
+              echo "Repository: $CIRCLE_REPOSITORY_URL"
               echo $GITHUB_TOKEN | << parameters.codeql_path >> github upload-results \
                 --repository=$repo \
                 --ref=refs/pull/${CIRCLE_PULL_REQUEST##*/}/head \
@@ -35,8 +34,7 @@ steps:
         - run:
             name: "Upload CodeQL Results for Branch"
             command: |
-              repo=$(echo $CIRCLE_REPOSITORY_URL | cut -d'/' -f4,5 | sed 's/\.git$//')
-              echo "Repository: $repo"
+              echo "Repository: $CIRCLE_REPOSITORY_URL"
               echo $GITHUB_TOKEN | << parameters.codeql_path >> github upload-results \
                 --repository=$repo \
                 --ref=refs/heads/${CIRCLE_BRANCH} \
