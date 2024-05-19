@@ -33,9 +33,7 @@ jobs:
           language_identifier: "javascript"
       - codeql/analyze:
           language_identifier: "javascript"
-      - codeql/upload:
-          codeql_path: "codeql-bundle.zip"
-
+      - codeql/upload
 
 workflows:
   test-deploy:
