@@ -31,6 +31,8 @@ jobs:
       - codeql/download
       - codeql/create_database:
           language_identifier: "javascript"
+      - codeql/analyze:
+          language_identifier: "javascript"    
 workflows:
   test-deploy:
     jobs:

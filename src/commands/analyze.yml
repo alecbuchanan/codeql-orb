@@ -4,11 +4,13 @@ description: >
 # Descriptions should be short, simple, and clear.
 
 parameters:
-  language:
+  language_identifier:
     description: The programming language for which the CodeQL database is to be created.
     type: string
 
 steps:
   - run:
+      environment:
+        LANGUAGE_IDENTIFIER: << parameters.language_identifier >>
       name: Analyze CodeQL Database
       command: <<include(scripts/analyze.sh)>>
