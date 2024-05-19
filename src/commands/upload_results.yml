@@ -3,10 +3,7 @@ description: >
 parameters:
   codeql_path:
     type: string
-    default: "./codeql/codeql"
-  sarif_file_path:
-    type: string
-    default: "./codeql/temp/results-js.sarif"
+    default: "/home/circleci/codeql/codeql"
   github_url:
     type: string
     default: "https://github.com/"
@@ -24,7 +21,7 @@ steps:
                 --repository=$repo \
                 --ref=refs/pull/${CIRCLE_PULL_REQUEST##*/}/head \
                 --commit=$CIRCLE_SHA1 \
-                --sarif=<< parameters.sarif_file_path >> \
+                --sarif=$SARIF_FILE_PATH \
                 --github-url=<< parameters.github_url >> \
                 --github-auth-stdin \<<< "$GITHUB_TOKEN"
 
@@ -38,6 +35,6 @@ steps:
                 --repository=$repo \
                 --ref=refs/heads/${CIRCLE_BRANCH} \
                 --commit=$CIRCLE_SHA1 \
-                --sarif=<< parameters.sarif_file_path >> \
+                --sarif=$SARIF_FILE_PATH \
                 --github-url=<< parameters.github_url >> \
                 --github-auth-stdin \<<< "$GITHUB_TOKEN"

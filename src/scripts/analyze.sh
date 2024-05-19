@@ -15,3 +15,6 @@ fi
 
 # Print the full path of the SARIF file for debugging
 echo "SARIF file location: $(pwd)/temp/results-$LANGUAGE_IDENTIFIER.sarif"
+
+# Export the SARIF file location for all subsequent steps
+echo "export SARIF_FILE_PATH=$(pwd)/temp/results-$LANGUAGE_IDENTIFIER.sarif" >> "$BASH_ENV"
