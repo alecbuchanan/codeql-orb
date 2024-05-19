@@ -2,7 +2,7 @@
 
 # Ensure the LANGUAGE_IDENTIFIER environment variable is set
 if [ -z "$LANGUAGE_IDENTIFIER" ]; then
-    echo "Error: LANGUAGE environment variable is not set."
+    echo "Error: LANGUAGE_IDENTIFIER environment variable is not set."
     exit 1
 fi
 

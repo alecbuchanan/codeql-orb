@@ -6,4 +6,4 @@ description: >
 steps:
   - run:
       name: Download CodeQL CLI
-      command: <<include(scripts/download.sh)>>
+      command: <<include(scripts/download_codeql.sh)>>

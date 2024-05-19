@@ -28,12 +28,12 @@ jobs:
     steps:
       - checkout: { path: "my-app" }
       # Run your orb's commands to validate them.
-      - codeql/download
+      - codeql/download_codeql
       - codeql/create_database:
           language_identifier: "javascript"
       - codeql/analyze:
           language_identifier: "javascript"
-      - codeql/upload
+      - codeql/upload_results
 
 workflows:
   test-deploy:
