@@ -14,3 +14,6 @@ mkdir -p codeql-dbs
 
 # Use the language from the environment variable to create a CodeQL database
 ./codeql database create ./codeql-dbs/repo-db --language="$LANGUAGE_IDENTIFIER" --source-root /home/circleci/project
+
+# Export the Language Identifier for all subsequent steps
+echo "export LANGUAGE_IDENTIFIER='$LANGUAGE_IDENTIFIER'" >> "$BASH_ENV"
