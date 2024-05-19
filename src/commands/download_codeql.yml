@@ -3,7 +3,16 @@ description: >
 # What will this command do?
 # Descriptions should be short, simple, and clear.
 
+# Add a CODEQL Directory parameter to allow users to specify the directory where the CodeQL CLI should be downloaded.
+parameters:
+  codeql_directory:
+    description: The directory where the CodeQL CLI should be downloaded.
+    type: string
+    default: "/home/circleci/codeql"
+
 steps:
   - run:
+      environment:
+        CODEQL_DIR: << parameters.codeql_directory >>
       name: Download CodeQL CLI
       command: <<include(scripts/download_codeql.sh)>>
