@@ -25,9 +25,6 @@ jobs:
   command-test:
     docker:
       - image: cimg/base:current
-    environment:
-      CODEQL_DIR: /home/circleci/codeql
-      PATH: "/home/circleci/codeql:$PATH"  
     steps:
       - checkout
       # Run your orb's commands to validate them.
