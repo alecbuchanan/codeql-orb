@@ -18,6 +18,9 @@ fi
 #Print the SARIF_FILE_PATH
 echo "SARIF File Path: $(pwd):$SARIF_FILE_PATH"
 
+# List the files in the current directory
+ls -la
+
 # Run the CodeQL database analyze command
 ./codeql database analyze ../codeql-dbs/repo-db --format=sarif-latest --output="${SARIF_FILE_PATH}"
 
