@@ -22,7 +22,7 @@ echo "SARIF File Path: $(pwd):$SARIF_FILE_PATH"
 ls -la
 
 # Run the CodeQL database analyze command
-./codeql database analyze ../codeql-dbs/repo-db --format=sarif-latest --output="${SARIF_FILE_PATH}"
+./codeql database analyze ./codeql-dbs/repo-db --format=sarif-latest --output="${SARIF_FILE_PATH}"
 
 # Extract the "organization/repo" format from the CIRCLE_REPOSITORY_URL environment variable
 repo=$(echo "$CIRCLE_REPOSITORY_URL" | awk -F'[:/]' '{print $2"/"$3}' | sed 's/\.git$//')
