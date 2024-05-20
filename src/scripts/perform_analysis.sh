@@ -21,6 +21,9 @@ mkdir -p temp
 # Run the CodeQL database analyze command
 ./codeql database analyze ./codeql-dbs/repo-db --format=sarif-latest --output="${SARIF_FILE_PATH}"
 
+# Extract the "organization/repo" format from the CIRCLE_REPOSITORY_URL environment variable
+repo=$(echo "$CIRCLE_REPOSITORY_URL" | awk -F'[:/]' '{print $2"/"$3}' | sed 's/\.git$//')
+
 # Conditional execution based on the presence of a pull request
 if [ -z "$CIRCLE_PULL_REQUEST" ]; then
     # No pull request, upload results for a branch
