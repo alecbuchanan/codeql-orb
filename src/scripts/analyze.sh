@@ -8,7 +8,7 @@ fi
 
 # Check if SARIF_FILE_PATH is an empty string. If it is, set it to a default value
 if [ -z "$SARIF_FILE_PATH" ]; then
-  export SARIF_FILE_PATH="./temp/results-"$CIRCLE_WORKFLOW_JOB_ID".sarif"
+  export SARIF_FILE_PATH="./temp/results-${CIRCLE_WORKFLOW_JOB_ID}.sarif"
 fi
 
 # Navigate to the CodeQL directory and create a temp directory if it doesn't exist
