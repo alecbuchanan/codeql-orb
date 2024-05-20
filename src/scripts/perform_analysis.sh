@@ -11,12 +11,14 @@ cd "$CODEQL_DIR" || exit
 mkdir -p temp
 
 # Check if SARIF_FILE_PATH is an empty string. If it is, set it to a default value
-if [ -z "$SARIF_FILE_PATH" ]; then
-  export SARIF_FILE_PATH="./temp/results-${CIRCLE_WORKFLOW_JOB_ID}.sarif"
+if [ -z "$SARIF_FILE_NAME" ]; then
+  export SARIF_FILE_NAME="./temp/results-${CIRCLE_WORKFLOW_JOB_ID}.sarif"
+else
+  export SARIF_FILE_NAME="./temp/$SARIF_FILE_NAME"
 fi
 
 # Run the CodeQL database analyze command
-./codeql database analyze ./codeql-dbs/repo-db --format=sarif-latest --output="${SARIF_FILE_PATH}"
+./codeql database analyze ./codeql-dbs/repo-db --format=sarif-latest --output="${SARIF_FILE_NAME}"
 
 # Extract the "organization/repo" format from the CIRCLE_REPOSITORY_URL environment variable
 repo=$(echo "$CIRCLE_REPOSITORY_URL" | awk -F'[:/]' '{print $2"/"$3}' | sed 's/\.git$//')
@@ -28,7 +30,7 @@ if [ -z "$CIRCLE_PULL_REQUEST" ]; then
                     --repository="$repo" \
                     --ref="refs/heads/${CIRCLE_BRANCH}" \
                     --commit="$CIRCLE_SHA1" \
-                    --sarif="$SARIF_FILE_PATH" \
+                    --sarif="$SARIF_FILE_NAME" \
                     --github-url="https://github.com/" \
                     --github-auth-stdin <<< "$GITHUB_TOKEN"; then
         echo "Successfully uploaded SARIF file to GitHub."
@@ -42,7 +44,7 @@ else
                     --repository="$repo" \
                     --ref="refs/pull/${CIRCLE_PULL_REQUEST##*/}/head" \
                     --commit="$CIRCLE_SHA1" \
-                    --sarif="$SARIF_FILE_PATH" \
+                    --sarif="$SARIF_FILE_NAME" \
                     --github-url="https://github.com/" \
                     --github-auth-stdin <<< "$GITHUB_TOKEN"; then
         echo "Successfully uploaded SARIF file to GitHub."
