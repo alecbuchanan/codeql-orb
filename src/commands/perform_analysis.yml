@@ -18,19 +18,3 @@ steps:
         SARIF_FILE_PATH: << parameters.sarif_file_path >>
       name: Analyze CodeQL Database
       command: <<include(scripts/perform_analysis.sh)>>
-  - run:
-      name: "Extract Repository Information"
-      command: <<include(scripts/parse_repository.sh)>>
-  - when:
-      condition: ${CIRCLE_PULL_REQUEST}
-      steps:
-        - run:
-            name: "Upload CodeQL Results for PR"
-            command: <<include(scripts/upload_pr.sh)>>
-
-  - unless:
-      condition: ${CIRCLE_PULL_REQUEST}
-      steps:
-        - run:
-            name: "Upload CodeQL Results for Branch"
-            command: <<include(scripts/upload_branch.sh)>>

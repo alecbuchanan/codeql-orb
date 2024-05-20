@@ -16,5 +16,5 @@ steps:
         CODEQL_DIR: << parameters.codeql_directory >>
         LANGUAGE_IDENTIFIER: << parameters.language_identifier >>
       name: Download CodeQL CLI
-      command: <<include(scripts/download_codeql.sh)>>
+      command: <<include(scripts/initialize_codeql.sh)>>
 
