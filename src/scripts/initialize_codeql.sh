@@ -29,6 +29,3 @@ mkdir -p codeql-dbs
 
 # Use the language from the environment variable to create a CodeQL database
 ./codeql database create ./codeql-dbs/repo-db --language="$LANGUAGE_IDENTIFIER" --source-root /home/circleci/project
-
-# List all files and directories in the current directory\
-ls -la
