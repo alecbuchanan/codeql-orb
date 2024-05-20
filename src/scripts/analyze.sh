@@ -1,20 +1,19 @@
 #!/bin/bash
 
+# Ensure the CODEQL_DIR environment variable is set
+if [ -z "$CODEQL_DIR" ]; then
+  echo "CODEQL_DIR environment variables must be set"
+  exit 1
+fi
+
+# Check if SARIF_FILE_PATH is an empty string. If it is, set it to a default value
+if [ -z "$SARIF_FILE_PATH" ]; then
+  export SARIF_FILE_PATH="./temp/results-"$CIRCLE_WORKFLOW_JOB_ID".sarif"
+fi
+
 # Navigate to the CodeQL directory and create a temp directory if it doesn't exist
 cd "$CODEQL_DIR" || exit
 mkdir -p temp
 
-# Ensure $LANGUAGE_IDENTIFIER is set
-if [ -z "$LANGUAGE_IDENTIFIER" ]; then
-    echo "Error: LANGUAGE_IDENTIFIER environment variable is not set."
-    exit 1
-fi
-
 # Run the CodeQL database analyze command
-./codeql database analyze ./codeql-dbs/repo-db --format=sarif-latest --output=./temp/results-"$LANGUAGE_IDENTIFIER".sarif
-
-# Print the full path of the SARIF file for debugging
-echo "SARIF file location: $(pwd)/temp/results-$LANGUAGE_IDENTIFIER.sarif"
-
-# Export the SARIF file location for all subsequent steps
-echo "export SARIF_FILE_PATH=$(pwd)/temp/results-$LANGUAGE_IDENTIFIER.sarif" >> "$BASH_ENV"
+./codeql database analyze ./codeql-dbs/repo-db --format=sarif-latest --output=${SARIF_FILE_PATH}

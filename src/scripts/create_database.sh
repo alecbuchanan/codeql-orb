@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# Ensure the LANGUAGE_IDENTIFIER environment variable is set
-if [ -z "$LANGUAGE_IDENTIFIER" ]; then
-    echo "Error: LANGUAGE_IDENTIFIER environment variable is not set."
-    exit 1
+# Ensure the LANGUAGE_IDENTIFIER and CODEQL_DIR environment variable is set
+if [ -z "$LANGUAGE_IDENTIFIER" ] || [ -z "$CODEQL_DIR" ]; then
+  echo "LANGUAGE_IDENTIFIER and CODEQL_DIR environment variables must be set"
+  exit 1
 fi
+
 
 # Navigate to $CODEQL_DIR before creating the CodeQL databases directory
 cd "$CODEQL_DIR" || exit 1

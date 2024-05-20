@@ -2,13 +2,21 @@ description: >
   This command runs CodeQL analysis on your codebase.
 
 parameters:
-  language_identifier:
-    description: The programming language for which the CodeQL database is to be created.
+  codeql_directory:
+    description: The directory on the runner where the CodeQL CLI is located.
     type: string
+    default: "/home/circleci/codeql"
+  sarif_file_path:
+    description: The file path including the filename of the SARIF file to be uploaded.
+    type: string
+    default: ""  
+    
+
 
 steps:
   - run:
       environment:
-        LANGUAGE_IDENTIFIER: << parameters.language_identifier >>
+        CODEQL_DIR: << parameters.codeql_directory >>
+        SARIF_FILE_PATH: << parameters.sarif_file_path >>
       name: Analyze CodeQL Database
       command: <<include(scripts/analyze.sh)>>
