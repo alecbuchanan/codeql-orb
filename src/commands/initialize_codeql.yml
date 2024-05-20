@@ -1,0 +1,20 @@
+description: >
+  This command downloads the CodeQL CLI and sets it up for use in your project.
+
+parameters:
+  codeql_directory:
+    description: The directory on the runner where the CodeQL CLI should be downloaded.
+    type: string
+    default: "/home/circleci/codeql"
+  language_identifier:
+    description: The programming language for which the CodeQL database is to be created.
+    type: string
+
+steps:
+  - run:
+      environment:
+        CODEQL_DIR: << parameters.codeql_directory >>
+        LANGUAGE_IDENTIFIER: << parameters.language_identifier >>
+      name: Download CodeQL CLI
+      command: <<include(scripts/download_codeql.sh)>>
+

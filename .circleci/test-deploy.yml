@@ -28,11 +28,9 @@ jobs:
     steps:
       - checkout
       # Run your orb's commands to validate them.
-      - codeql/download_codeql
-      - codeql/create_database:
+      - codeql/initialize_codeql:
           language_identifier: "javascript"
-      - codeql/analyze
-      - codeql/upload_results
+      - codeql/perform_analysis
 
 workflows:
   test-deploy:

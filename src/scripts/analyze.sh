@@ -11,6 +11,9 @@ if [ -z "$SARIF_FILE_PATH" ]; then
   export SARIF_FILE_PATH="./temp/results-${CIRCLE_WORKFLOW_JOB_ID}.sarif"
 fi
 
+#Print the SARIF_FILE_PATH
+echo "SARIF File Path: $SARIF_FILE_PATH"
+
 # Navigate to the CodeQL directory and create a temp directory if it doesn't exist
 cd "$CODEQL_DIR" || exit
 mkdir -p temp
