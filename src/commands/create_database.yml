@@ -10,8 +10,6 @@ parameters:
     description: The programming language for which the CodeQL database is to be created.
     type: string
 
-
-
 steps:
   - run:
       environment:

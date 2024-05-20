@@ -9,9 +9,7 @@ parameters:
   sarif_file_path:
     description: The file path including the filename of the SARIF file to be uploaded.
     type: string
-    default: ""  
-    
-
+    default: ""
 
 steps:
   - run:

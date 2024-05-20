@@ -16,4 +16,4 @@ cd "$CODEQL_DIR" || exit
 mkdir -p temp
 
 # Run the CodeQL database analyze command
-./codeql database analyze ./codeql-dbs/repo-db --format=sarif-latest --output=${SARIF_FILE_PATH}
+./codeql database analyze ./codeql-dbs/repo-db --format=sarif-latest --output="${SARIF_FILE_PATH}"
