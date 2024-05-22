@@ -15,6 +15,6 @@ steps:
       environment:
         CODEQL_DIR: << parameters.codeql_directory >>
         LANGUAGE_IDENTIFIER: << parameters.language_identifier >>
-      name: Download CodeQL CLI
+      name: Download CodeQL CLI and Create CodeQL Database
       command: <<include(scripts/initialize_codeql.sh)>>
 

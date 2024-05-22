@@ -1,5 +1,7 @@
 description: >
-  This command runs CodeQL analysis on your codebase.
+  This command runs CodeQL analysis on your codebase. 
+  The results are uploaded as a SARIF file to the corresponding branch or pull request that triggered the workflow. 
+  The CodeQL CLI must be downloaded and the CodeQL database must be created before running this command.
 
 parameters:
   codeql_directory:
@@ -7,7 +9,7 @@ parameters:
     type: string
     default: "/home/circleci/codeql"
   sarif_file_name:
-    description: The file name of the SARIF file to be uploaded including the .sarif filetype.
+    description: The file name of the SARIF file to be uploaded including the .sarif file extension.
     type: string
     default: ""
 
@@ -16,5 +18,5 @@ steps:
       environment:
         CODEQL_DIR: << parameters.codeql_directory >>
         SARIF_FILE_NAME: << parameters.sarif_file_name >>
-      name: Analyze CodeQL Database
+      name: Analyze CodeQL Database and Upload Results
       command: <<include(scripts/perform_analysis.sh)>>
