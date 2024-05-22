@@ -1,0 +1,21 @@
+description: >
+  Checkout your repository to be scanned and download and install the CodeQL CLI and create a database for the specified language identifier.
+usage:
+  version: 2.1
+
+  orbs:
+    codeql: alecbuchanan/codeql@1.0.0
+
+  jobs:
+    initialize_codeql:
+      executor: codeql/default
+      steps:
+        - checkout
+        - codeql/initialize_codeql:
+            language_identifier: "javascript"
+        - codeql/perform_analysis    
+
+  workflows:
+    run_codeql_analysis:
+      jobs:
+        - initialize_codeql
