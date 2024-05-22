@@ -13,7 +13,7 @@ usage:
         - checkout
         - codeql/initialize_codeql:
             language_identifier: "javascript"
-        - codeql/perform_analysis    
+        - codeql/perform_analysis
 
   workflows:
     run_codeql_analysis:
