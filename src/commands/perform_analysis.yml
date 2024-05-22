@@ -1,6 +1,6 @@
 description: >
-  This command runs CodeQL analysis on your codebase. 
-  The results are uploaded as a SARIF file to the corresponding branch or pull request that triggered the workflow. 
+  This command runs CodeQL analysis on your codebase.
+  The results are uploaded as a SARIF file to the corresponding branch or pull request that triggered the workflow.
   The CodeQL CLI must be downloaded and the CodeQL database must be created before running this command.
 
 parameters:
