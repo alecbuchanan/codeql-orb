@@ -3,6 +3,7 @@ version: 2.1
 description: >
   Use this orb to run CodeQL analysis on your codebase.
   This orb provides a command to download the CodeQL CLI and initialize the database, and a command to run CodeQL analysis on your codebase and upload the results to GitHub as a SARIF file.
+  Supports Linux, with Windows and macOS support coming soon.
 
 display:
   home_url: "https://codeql.github.com/"
