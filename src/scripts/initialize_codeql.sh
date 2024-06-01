@@ -28,10 +28,10 @@ cd "$CODEQL_DIR" || exit 1
 mkdir -p codeql-dbs
 
 # Use the language from the environment variable to create a CodeQL database
+CMD="./codeql database create ./codeql-dbs/repo-db --language=\"$LANGUAGE_IDENTIFIER\" --source-root /home/circleci/project"
+
 if [ -n "$BUILD_MODE" ]; then
-  CMD="./codeql database create ./codeql-dbs/repo-db --language=\"$LANGUAGE_IDENTIFIER\" --source-root /home/circleci/project"
-else
-  CMD="./codeql database create ./codeql-dbs/repo-db --language=\"$LANGUAGE_IDENTIFIER\" --source-root /home/circleci/project --build-mode=\"$BUILD_MODE\""
+  CMD="$CMD --build-mode=\"$BUILD_MODE\""
 fi
 
 if [ -n "$COMMAND" ]; then
