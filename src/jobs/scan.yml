@@ -13,6 +13,7 @@ parameters:
     type: string
     default: "/home/circleci/codeql"
   language_identifier:
+    type: enum
     description: >
         The programming language for which the CodeQL database is to be created.
         CodeQL supports [ 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'swift' ]
@@ -35,6 +36,7 @@ parameters:
     default: ""
   resource_class:
     default: large
+    type: enum
     description: Configure the executor resource class
     enum:
     - small
