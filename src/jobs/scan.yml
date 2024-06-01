@@ -2,12 +2,32 @@ description: |
   Simple drop-in job to scan your codebase with CodeQL and upload it back to GitHub automatically.
 
 parameters:
-  version:
+  executor_type:
+    type: enum
+    default: node
+    description: >
+        The executor type to use for the job.
+        Currently only 'node' is supported.
+    enum:
+    - node
+  executor_version:
     type: string
     default: 'lts'
     description: >
         Pick a specific cimg/node image variant:
         https://circleci.com/developer/images/image/cimg/node
+  resource_class:
+    default: large
+    type: enum
+    description: Configure the executor resource class
+    enum:
+    - small
+    - medium
+    - medium+
+    - large
+    - xlarge
+    - 2xlarge
+    - 2xlarge+      
   codeql_directory:
     description: The directory on the runner where the CodeQL CLI should be downloaded. This should exist outside of the project directory.
     type: string
@@ -33,22 +53,10 @@ parameters:
     description: The file name of the SARIF file to be uploaded including the .sarif file extension.
     type: string
     default: ""
-  resource_class:
-    default: large
-    type: enum
-    description: Configure the executor resource class
-    enum:
-    - small
-    - medium
-    - medium+
-    - large
-    - xlarge
-    - 2xlarge
-    - 2xlarge+
 
 executor:
-  name: default
-  tag: <<parameters.version>>
+  name: <<parameters.executor_type>>
+  tag: <<parameters.executor_version>>
   resource_class: <<parameters.resource_class>>
 
 steps:
