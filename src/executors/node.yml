@@ -24,4 +24,5 @@ resource_class:
 
 docker:
   - image: 'cimg/node:<<parameters.tag>>'
-resource_class: <<parameters.resource_class>>  
+resource_class: <<parameters.resource_class>>
+
