@@ -48,7 +48,7 @@ parameters:
 
 executor:
   name: default
-  tag: <<parameters.tag>>
+  tag: <<parameters.version>>
   resource_class: <<parameters.resource_class>>
 
 steps:
