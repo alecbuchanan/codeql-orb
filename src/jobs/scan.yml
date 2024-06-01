@@ -29,7 +29,6 @@ parameters:
     - "python"
     - "ruby"
     - "swift"
-
   sarif_file_name:
     description: The file name of the SARIF file to be uploaded including the .sarif file extension.
     type: string
@@ -46,7 +45,6 @@ parameters:
     - xlarge
     - 2xlarge
     - 2xlarge+
-    type: enum
 
 executor:
   name: default
