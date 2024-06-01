@@ -1,0 +1,23 @@
+description: >
+  macos xcode machine image is available for those wanting to run macOS specific workloads on CircleCI.
+  A number of images are available with Xcode preinstalled, and run in dedicated virtual machines on genuine Apple hardware.
+
+parameters:
+  tag:
+    description: >
+      Pick a specific xcode version:
+      https://circleci.com/developer/machine/image/xcode
+    type: string
+  resource_class:
+    type: enum
+    default: macos.x86.medium.gen2*
+    description: Configure the executor resource class
+    enum:
+      - macos.x86.medium.gen2*
+      - macos.m1.medium.gen1
+      - macos.m1.large.gen1
+
+macos:
+  xcode: <<parameters.tag>>
+resource_class: <<parameters.resource_class>>  
+

@@ -2,20 +2,24 @@ description: |
   Simple drop-in job to scan your codebase with CodeQL and upload it back to GitHub automatically.
 
 parameters:
-  executor_type:
+  executor_environment:
     type: enum
-    default: node
-    description: >
-        The executor type to use for the job.
-        Currently only 'node' is supported.
+    default: base
+    description: The executor type to use for the job.
     enum:
+    - base
+    - openjdk
     - node
+    - python
+    - ruby
+    - macos
+    - go
   executor_version:
     type: string
-    default: 'lts'
     description: >
-        Pick a specific cimg/node image variant:
-        https://circleci.com/developer/images/image/cimg/node
+        Pick a specific image variant for the executor type:
+        https://circleci.com/developer/images?imageType=docker
+        https://circleci.com/developer/machine/image/xcode
   resource_class:
     default: large
     type: enum
@@ -55,7 +59,7 @@ parameters:
     default: ""
 
 executor:
-  name: <<parameters.executor_type>>
+  name: <<parameters.executor_environment>>
   tag: <<parameters.executor_version>>
   resource_class: <<parameters.resource_class>>
 
