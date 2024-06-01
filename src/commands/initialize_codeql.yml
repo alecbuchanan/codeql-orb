@@ -25,11 +25,13 @@ parameters:
     - "swift"
   command:
     type: string
+    default: ""
     description: >
         Use to specify the build command or script that invokes the build process for the codebase.
         Not needed for Python and JavaScript/TypeScript analysis.
   build_mode:
     type: string
+    default: ""
     description: >
         Use for Java when not providing a command to specify whether to create a CodeQL database without a build (none) or by attempting to
         automatically detect a buld command (autobuild). By default, autobuild detection is used.
