@@ -19,5 +19,4 @@ parameters:
 
 macos:
   xcode: <<parameters.tag>>
-resource_class: <<parameters.resource_class>>  
-
+resource_class: <<parameters.resource_class>>
