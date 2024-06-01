@@ -56,4 +56,4 @@ steps:
     - initialize_codeql:
         codeql_directory: <<parameters.codeql_directory>>
         language_identifier: <<parameters.language_identifier>>
-    - codeql/perform_analysis
+    - perform_analysis
