@@ -2,19 +2,58 @@ description: |
   Simple drop-in job to scan your codebase with CodeQL and upload it back to GitHub automatically.
 
 parameters:
+  version:
+    type: string
+    default: 'lts'
+    description: >
+        Pick a specific cimg/node image variant:
+        https://circleci.com/developer/images/image/cimg/node
   codeql_directory:
     description: The directory on the runner where the CodeQL CLI should be downloaded. This should exist outside of the project directory.
     type: string
     default: "/home/circleci/codeql"
   language_identifier:
-    description: The programming language for which the CodeQL database is to be created.
-    type: string
+    description: > 
+        The programming language for which the CodeQL database is to be created.
+        CodeQL supports [ 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'swift' ]
+        Use only 'java-kotlin' to analyze code written in Java, Kotlin or both
+        Use only 'javascript-typescript' to analyze code written in JavaScript, TypeScript or both
+        Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
+    enum:
+    - "c-cpp"
+    - "csharp"
+    - "go"
+    - "java-kotlin"
+    - "javascript-typescript"
+    - "python"
+    - "ruby"
+    - "swift"
+
   sarif_file_name:
     description: The file name of the SARIF file to be uploaded including the .sarif file extension.
     type: string
     default: ""
+  resource_class:
+    default: large
+    description: Configure the executor resource class
+    enum:
+    - small
+    - medium
+    - medium+
+    - large
+    - xlarge
+    - 2xlarge
+    - 2xlarge+
+    type: enum  
 
-executors:
-  codeql/default:
-    docker:
-      - image: circleci/codeql:latest    
+executor:
+  name: default
+  tag: <<parameters.tag>>
+  resource_class: <<parameters.resource_class>>
+
+steps:
+    - checkout
+    - initialize_codeql:
+        codeql_directory: <<parameters.codeql_directory>>
+        language_identifier: <<parameters.language_identifier>>
+    - codeql/perform_analysis

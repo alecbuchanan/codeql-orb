@@ -1,0 +1,27 @@
+description: >
+  cimg/node is a Docker image created by CircleCI with continuous integration builds in mind. 
+  Each tag contains a version of Node.js, npm, yarn v1, and any binaries and tools that are required for builds to complete successfully in a CircleCI environment.
+
+parameters:
+    tag:
+      default: lts
+      description: >
+        Pick a specific cimg/node image variant:
+        https://circleci.com/developer/images/image/cimg/node
+      type: string
+resource_class:
+      type: enum
+      default: large
+      description: Configure the executor resource class
+      enum:
+          - small
+          - medium
+          - medium+
+          - large
+          - xlarge
+          - 2xlarge
+          - 2xlarge+
+
+docker:
+  - image: 'cimg/node:<<parameters.tag>>'
+resource_class: <<parameters.resource_class>>  

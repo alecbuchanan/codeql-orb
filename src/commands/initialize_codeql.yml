@@ -7,8 +7,21 @@ parameters:
     type: string
     default: "/home/circleci/codeql"
   language_identifier:
-    description: The programming language for which the CodeQL database is to be created.
-    type: string
+    description: > 
+        The programming language for which the CodeQL database is to be created.
+        CodeQL supports [ 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'swift' ]
+        Use only 'java-kotlin' to analyze code written in Java, Kotlin or both
+        Use only 'javascript-typescript' to analyze code written in JavaScript, TypeScript or both
+        Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
+    enum:
+    - "c-cpp"
+    - "csharp"
+    - "go"
+    - "java-kotlin"
+    - "javascript-typescript"
+    - "python"
+    - "ruby"
+    - "swift"
 
 steps:
   - run:
