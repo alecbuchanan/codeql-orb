@@ -35,8 +35,6 @@ else
 fi
 
 if [ -z "$COMMAND" ]; then
-  # Do nothing
-else
   CMD="$CMD --command=\"$COMMAND\""
 fi
 
