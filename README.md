@@ -11,7 +11,7 @@ This orb also provides out of the box jobs to easily run a full end to end CodeQ
 
 ## Usage
 
-_For full usage guidelines, see the [orb registry listing](https://circleci.com/developer/orbs/orb/alecbuchanan/codeql)_
+_For full usage guidelines, see the [orb registry listing.](https://circleci.com/developer/orbs/orb/alecbuchanan/codeql)_
 
 ## How to Contribute
 
