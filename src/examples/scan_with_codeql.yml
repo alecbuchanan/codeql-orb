@@ -7,7 +7,7 @@ usage:
     codeql: alecbuchanan/codeql@1.0.0
 
   jobs:
-    initialize_codeql:
+    perform_codeql_analysis:
       executor: codeql/default
       steps:
         - checkout
@@ -18,4 +18,4 @@ usage:
   workflows:
     run_codeql_analysis:
       jobs:
-        - initialize_codeql
+        - perform_codeql_analysis
