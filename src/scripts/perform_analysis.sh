@@ -11,9 +11,6 @@ if [[ $EUID == 0 ]]; then export SUDO=""; else # Check if we are root
   export SUDO="sudo";
 fi
 
-#CREATE VARIABLE AUTH_TOKEN FROM TOKEN ENVIRONMENT VARIABLE
-export AUTH_TOKEN="${TOKEN:?}"
-
 # Navigate to the CodeQL directory and create a temp directory if it doesn't exist
 cd "$CODEQL_DIR" || exit
 $SUDO mkdir -p temp
@@ -30,6 +27,9 @@ $SUDO ./codeql database analyze ./codeql-dbs/repo-db --format=sarif-latest --out
 
 # Extract the "organization/repo" format from the CIRCLE_REPOSITORY_URL environment variable
 repo=$(echo "$CIRCLE_REPOSITORY_URL" | awk -F'[:/]' '{print $2"/"$3}' | sed 's/\.git$//')
+
+# Set the GitHub token from the environment variable
+AUTH_TOKEN=${!PARAM_GITHUB_TOKEN}
 
 # Conditional execution based on the presence of a pull request
 if [ -z "$CIRCLE_PULL_REQUEST" ]; then
