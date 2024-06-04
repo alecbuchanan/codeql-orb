@@ -33,7 +33,7 @@ cd "$CODEQL_DIR" || exit 1
 $SUDO mkdir -p codeql-dbs
 
 # Change the ownership of the codeql-dbs directory to the current user
-$SUDO chown -R $(whoami) codeql-dbs
+$SUDO chown -R "$(whoami)" codeql-dbs
 
 # Use the language from the environment variable to create a CodeQL database
 CMD="./codeql database create ./codeql-dbs/repo-db --language=\"$LANGUAGE_IDENTIFIER\" --source-root /home/circleci/project"
