@@ -31,7 +31,7 @@ jobs:
       - codeql/initialize_codeql:
           language_identifier: "javascript-typescript"
       - codeql/perform_analysis:
-          GITHUB_TOKEN: $GITHUB_TOKEN
+          github_token: $GITHUB_TOKEN
 
 workflows:
   test-deploy:
