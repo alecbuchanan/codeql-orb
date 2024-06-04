@@ -11,6 +11,9 @@ if [[ $EUID == 0 ]]; then export SUDO=""; else # Check if we are root
   export SUDO="sudo";
 fi
 
+#CREATE VARIABLE AUTH_TOKEN FROM TOKEN ENVIRONMENT VARIABLE
+export AUTH_TOKEN="${TOKEN:?}"
+
 # Navigate to the CodeQL directory and create a temp directory if it doesn't exist
 cd "$CODEQL_DIR" || exit
 $SUDO mkdir -p temp
@@ -37,7 +40,7 @@ if [ -z "$CIRCLE_PULL_REQUEST" ]; then
                     --commit="$CIRCLE_SHA1" \
                     --sarif="$SARIF_FILE_NAME" \
                     --github-url="https://github.com/" \
-                    --github-auth-stdin <<< "$GITHUB_TOKEN"; then
+                    --github-auth-stdin <<< "$AUTH_TOKEN"; then
         echo "Successfully uploaded SARIF file to GitHub."
     else
         echo "Failed to upload SARIF file to GitHub."
@@ -51,7 +54,7 @@ else
                     --commit="$CIRCLE_SHA1" \
                     --sarif="$SARIF_FILE_NAME" \
                     --github-url="https://github.com/" \
-                    --github-auth-stdin <<< "$GITHUB_TOKEN"; then
+                    --github-auth-stdin <<< "$AUTH_TOKEN"; then
         echo "Successfully uploaded SARIF file to GitHub."
     else
         echo "Failed to upload SARIF file to GitHub."
