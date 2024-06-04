@@ -6,9 +6,14 @@ if [ -z "$CODEQL_DIR" ]; then
   exit 1
 fi
 
+# Check if the user is root https://circleci.com/docs/orbs-best-practices/#check-for-root
+if [[ $EUID == 0 ]]; then export SUDO=""; else # Check if we are root
+  export SUDO="sudo";
+fi
+
 # Navigate to the CodeQL directory and create a temp directory if it doesn't exist
 cd "$CODEQL_DIR" || exit
-mkdir -p temp
+$SUDO mkdir -p temp
 
 # Check if SARIF_FILE_PATH is an empty string. If it is, set it to a default value
 if [ -z "$SARIF_FILE_NAME" ]; then
