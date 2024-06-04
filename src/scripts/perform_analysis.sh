@@ -6,6 +6,9 @@ if [ -z "$CODEQL_DIR" ]; then
   exit 1
 fi
 
+# Use BASH parameter expansion to get the value of GITHUB_TOKEN
+GITHUB_TOKEN="${!GITHUB_TOKEN}"
+
 # Check if the user is root https://circleci.com/docs/orbs-best-practices/#check-for-root
 if [[ $EUID == 0 ]]; then export SUDO=""; else # Check if we are root
   export SUDO="sudo";
