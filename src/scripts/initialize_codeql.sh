@@ -46,4 +46,4 @@ if [ -n "$COMMAND" ]; then
   CMD="$CMD --command=\"$COMMAND\""
 fi
 
-$SUDO sh -c "$CMD"
+sh -c "$CMD"
