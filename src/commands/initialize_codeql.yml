@@ -2,10 +2,10 @@ description: >
   This command downloads the CodeQL CLI and sets it up for use in your project.
 
 parameters:
-  codeql_directory:
+  install_path:
     description: The directory on the runner where the CodeQL CLI should be downloaded. This should exist outside of the project directory.
     type: string
-    default: "/home/circleci/codeql"
+    default: "/usr/local/bin"
   language_identifier:
     type: enum
     description: >
@@ -40,7 +40,7 @@ parameters:
 steps:
 - run:
     environment:
-      CODEQL_DIR: << parameters.codeql_directory >>
+      CODEQL_DIR: << parameters.install_path >>
       LANGUAGE_IDENTIFIER: << parameters.language_identifier >>
       COMMAND: << parameters.command >>
       BUILD_MODE: << parameters.build_mode >>

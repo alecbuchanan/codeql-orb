@@ -1,5 +1,5 @@
 description: |
-  Simple drop-in job to scan your codebase with CodeQL and upload it back to GitHub automatically.
+  Simple drop-in job to scan your codebase with CodeQL and upload the results back to GitHub automatically.
 
 parameters:
   executor_environment:

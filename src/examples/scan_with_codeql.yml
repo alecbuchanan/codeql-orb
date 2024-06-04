@@ -12,7 +12,7 @@ usage:
       steps:
         - checkout
         - codeql/initialize_codeql:
-            language_identifier: "javascript"
+            language_identifier: "javascript-typescript"
         - codeql/perform_analysis
 
   workflows:
