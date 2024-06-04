@@ -23,7 +23,7 @@ else
 fi
 
 # Run the CodeQL database analyze command
-./codeql database analyze ./codeql-dbs/repo-db --format=sarif-latest --output="${SARIF_FILE_NAME}"
+$SUDO ./codeql database analyze ./codeql-dbs/repo-db --format=sarif-latest --output="${SARIF_FILE_NAME}"
 
 # Extract the "organization/repo" format from the CIRCLE_REPOSITORY_URL environment variable
 repo=$(echo "$CIRCLE_REPOSITORY_URL" | awk -F'[:/]' '{print $2"/"$3}' | sed 's/\.git$//')
