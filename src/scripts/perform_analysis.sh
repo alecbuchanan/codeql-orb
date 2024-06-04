@@ -37,7 +37,7 @@ if [ -z "$CIRCLE_PULL_REQUEST" ]; then
                     --commit="$CIRCLE_SHA1" \
                     --sarif="$SARIF_FILE_NAME" \
                     --github-url="https://github.com/" \
-                    --github-auth-stdin <<< "${GITHUB_TOKEN?}"; then
+                    --github-auth-stdin <<< "$GITHUB_TOKEN"; then
         echo "Successfully uploaded SARIF file to GitHub."
     else
         echo "Failed to upload SARIF file to GitHub."
@@ -51,7 +51,7 @@ else
                     --commit="$CIRCLE_SHA1" \
                     --sarif="$SARIF_FILE_NAME" \
                     --github-url="https://github.com/" \
-                    --github-auth-stdin <<< "${GITHUB_TOKEN?}"; then
+                    --github-auth-stdin <<< "$GITHUB_TOKEN"; then
         echo "Successfully uploaded SARIF file to GitHub."
     else
         echo "Failed to upload SARIF file to GitHub."
