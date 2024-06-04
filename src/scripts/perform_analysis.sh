@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Ensure the CODEQL_DIR environment variable is set
 if [ -z "$CODEQL_DIR" ]; then
