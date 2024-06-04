@@ -68,4 +68,5 @@ steps:
     - initialize_codeql:
         install_path: <<parameters.install_path>>
         language_identifier: <<parameters.language_identifier>>
-    - perform_analysis
+    - perform_analysis:
+
