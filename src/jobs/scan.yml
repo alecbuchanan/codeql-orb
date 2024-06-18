@@ -12,7 +12,7 @@ parameters:
     - node
     - python
     - ruby
-    - macos
+    # - macos
     - go
   executor_version:
     type: string
@@ -32,6 +32,9 @@ parameters:
     - xlarge
     - 2xlarge
     - 2xlarge+
+    # - macos.x86.medium.gen2*
+    # - macos.m1.medium.gen1
+    # - macos.m1.large.gen1
   install_path:
     description: The directory on the runner where the CodeQL CLI should be downloaded. This should exist outside of the project directory.
     type: string
@@ -52,7 +55,7 @@ parameters:
     - "javascript-typescript"
     - "python"
     - "ruby"
-    - "swift"
+    # - "swift"
   sarif_file_name:
     description: The file name of the SARIF file to be uploaded including the .sarif file extension.
     type: string
