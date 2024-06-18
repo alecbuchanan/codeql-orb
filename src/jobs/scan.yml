@@ -1,0 +1,75 @@
+description: |
+  Simple drop-in job to scan your codebase with CodeQL and upload the results back to GitHub automatically.
+
+parameters:
+  executor_environment:
+    type: enum
+    default: base
+    description: The executor type to use for the job.
+    enum:
+    - base
+    - openjdk
+    - node
+    - python
+    - ruby
+    # - macos
+    - go
+  executor_version:
+    type: string
+    description: >
+        Pick a specific image variant for the executor type:
+        https://circleci.com/developer/images?imageType=docker
+        https://circleci.com/developer/machine/image/xcode
+  resource_class:
+    default: large
+    type: enum
+    description: Configure the executor resource class
+    enum:
+    - small
+    - medium
+    - medium+
+    - large
+    - xlarge
+    - 2xlarge
+    - 2xlarge+
+    # - macos.x86.medium.gen2*
+    # - macos.m1.medium.gen1
+    # - macos.m1.large.gen1
+  install_path:
+    description: The directory on the runner where the CodeQL CLI should be downloaded. This should exist outside of the project directory.
+    type: string
+    default: "/usr/local/bin"
+  language_identifier:
+    type: enum
+    description: >
+        The programming language for which the CodeQL database is to be created.
+        CodeQL supports [ 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'swift' ]
+        Use only 'java-kotlin' to analyze code written in Java, Kotlin or both
+        Use only 'javascript-typescript' to analyze code written in JavaScript, TypeScript or both
+        Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
+    enum:
+    - "c-cpp"
+    - "csharp"
+    - "go"
+    - "java-kotlin"
+    - "javascript-typescript"
+    - "python"
+    - "ruby"
+    # - "swift"
+  sarif_file_name:
+    description: The file name of the SARIF file to be uploaded including the .sarif file extension.
+    type: string
+    default: ""
+
+executor:
+  name: <<parameters.executor_environment>>
+  tag: <<parameters.executor_version>>
+  resource_class: <<parameters.resource_class>>
+
+steps:
+    - checkout
+    - initialize_codeql:
+        install_path: <<parameters.install_path>>
+        language_identifier: <<parameters.language_identifier>>
+    - perform_analysis
+

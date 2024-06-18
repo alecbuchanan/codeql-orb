@@ -1,0 +1,48 @@
+description: >
+  This command downloads the CodeQL CLI and sets it up for use in your project.
+
+parameters:
+  install_path:
+    description: The directory on the runner where the CodeQL CLI should be downloaded. This should exist outside of the project directory.
+    type: string
+    default: "/usr/local/bin"
+  language_identifier:
+    type: enum
+    description: >
+        The programming language for which the CodeQL database is to be created.
+        CodeQL supports [ 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'swift' ]
+        Use only 'java-kotlin' to analyze code written in Java, Kotlin or both
+        Use only 'javascript-typescript' to analyze code written in JavaScript, TypeScript or both
+        Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
+    enum:
+    - "c-cpp"
+    - "csharp"
+    - "go"
+    - "java-kotlin"
+    - "javascript-typescript"
+    - "python"
+    - "ruby"
+    - "swift"
+  command:
+    type: string
+    default: ""
+    description: >
+        Use to specify the build command or script that invokes the build process for the codebase.
+        Not needed for Python and JavaScript/TypeScript analysis.
+  build_mode:
+    type: string
+    default: ""
+    description: >
+        Use for Java when not providing a command to specify whether to create a CodeQL database without a build (none) or by attempting to
+        automatically detect a buld command (autobuild). By default, autobuild detection is used.
+        https://docs.github.com/en/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/codeql-code-scanning-for-compiled-languages#codeql-build-modes
+
+steps:
+- run:
+    environment:
+      CODEQL_DIR: << parameters.install_path >>
+      LANGUAGE_IDENTIFIER: << parameters.language_identifier >>
+      COMMAND: << parameters.command >>
+      BUILD_MODE: << parameters.build_mode >>
+    name: Download CodeQL CLI and Create CodeQL Database
+    command: <<include(scripts/initialize_codeql.sh)>>

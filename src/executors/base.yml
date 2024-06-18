@@ -1,0 +1,27 @@
+description: >
+  cimg/base is an Ubuntu Docker image created by CircleCI with continuous integration builds in mind.
+  This image contains the minimum tools required to operate a build on CircleCI (such as git) as well as extremely popular and useful tools in CircleCI (such as docker).
+
+parameters:
+  tag:
+    default: current
+    description: >
+      Pick a specific cimg/base image variant:
+      https://circleci.com/developer/images/image/cimg/base
+    type: string
+  resource_class:
+    type: enum
+    default: large
+    description: Configure the executor resource class
+    enum:
+      - small
+      - medium
+      - medium+
+      - large
+      - xlarge
+      - 2xlarge
+      - 2xlarge+
+
+docker:
+    - image: 'cimg/base:<<parameters.tag>>'
+resource_class: <<parameters.resource_class>>

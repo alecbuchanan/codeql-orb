@@ -1,0 +1,26 @@
+description: >
+  cimg/python is a Docker image created by CircleCI with continuous integration builds in mind. Each tag contains a complete Python version via pyenv.
+  pip, pipenv, and poetry are pre-installed, and any binaries and tools that are required for builds to complete successfully in a CircleCI environment.
+
+parameters:
+  tag:
+    description: >
+      Pick a specific cimg/python image variant:
+      https://circleci.com/developer/images/image/cimg/python
+    type: string
+  resource_class:
+    type: enum
+    default: large
+    description: Configure the executor resource class
+    enum:
+      - small
+      - medium
+      - medium+
+      - large
+      - xlarge
+      - 2xlarge
+      - 2xlarge+
+
+docker:
+    - image: 'cimg/python:<<parameters.tag>>'
+resource_class: <<parameters.resource_class>>
