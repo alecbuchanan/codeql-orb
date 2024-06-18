@@ -32,8 +32,11 @@ repo=$(echo "$CIRCLE_REPOSITORY_URL" | awk -F'[:/]' '{print $2"/"$3}' | sed 's/\
 # Set the GitHub token from the environment variable
 AUTH_TOKEN=${!PARAM_GITHUB_TOKEN}
 
+if [ -z "$CIRCLE_PULL_REQUEST" ] && [ -z "$CIRCLE_BRANCH" ]; then
+  # Neither pull request nor branch, skip upload
+  echo "Neither a branch nor a pull request is present. Skipping upload."
 # Conditional execution based on the presence of a pull request
-if [ -z "$CIRCLE_PULL_REQUEST" ]; then
+elif [ -z "$CIRCLE_PULL_REQUEST" ]; then
     # No pull request, upload results for a branch
     if "${CODEQL_DIR}/codeql" github upload-results \
                     --repository="$repo" \
