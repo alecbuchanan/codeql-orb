@@ -20,6 +20,8 @@ jobs:
 workflows:
   lint-pack:
     jobs:
+      - echo-repo:
+          filters: *filters
       - orb-tools/lint:
           filters: *filters
       - orb-tools/pack:
