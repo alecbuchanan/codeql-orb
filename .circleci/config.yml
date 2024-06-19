@@ -15,7 +15,7 @@ jobs:
     steps:
       - run:
           name: echo pipeline.trigger_parameters.github_app.repo_url
-          command: echo << pipeline.trigger_parameters.github_app.repo_url >>    
+          command: echo << parameters.github_app.repo_url >>    
 
 workflows:
   lint-pack:
