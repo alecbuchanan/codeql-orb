@@ -26,8 +26,18 @@ fi
 # Run the CodeQL database analyze command
 $SUDO ./codeql database analyze ./codeql-dbs/repo-db --format=sarif-latest --output="${SARIF_FILE_NAME}"
 
-# Extract the "organization/repo" format from the CIRCLE_REPOSITORY_URL environment variable
-repo=$(echo "$CIRCLE_REPOSITORY_URL" | awk -F'[:/]' '{print $2"/"$3}' | sed 's/\.git$//')
+# Check if GIT_URL is present, echo the value, and exit if empty
+if [ -z "$GIT_URL" ]
+then
+  echo "GIT_URL is empty or not set. Exiting."
+  exit 1
+fi
+
+# Echo the value of the GIT_URL environment variable
+echo "GIT_URL: $GIT_URL"
+
+# Extract the "organization/repo" format from the GIT_URL environment variable
+repo=$(echo "$GIT_URL" | awk -F'[:/]' '{print $2"/"$3}' | sed 's/\.git$//')
 
 # Set the GitHub token from the environment variable
 AUTH_TOKEN=${!PARAM_GITHUB_TOKEN}

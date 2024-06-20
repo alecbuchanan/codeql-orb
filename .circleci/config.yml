@@ -8,20 +8,9 @@ filters: &filters
   tags:
     only: /.*/
 
-jobs:
-  echo-repo:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - run:
-          name: echo pipeline.trigger_parameters.github_app.repo_url
-          command: echo << parameters.github_app.repo_url >>    
-
 workflows:
   lint-pack:
     jobs:
-      - echo-repo:
-          filters: *filters
       - orb-tools/lint:
           filters: *filters
       - orb-tools/pack:

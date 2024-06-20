@@ -27,5 +27,6 @@ steps:
         CODEQL_DIR: << parameters.install_path >>
         SARIF_FILE_NAME: << parameters.sarif_file_name >>
         PARAM_GITHUB_TOKEN: << parameters.github_token >>
+        GIT_URL: << pipeline.project.git_url >>
       name: Analyze CodeQL Database and Upload Results
       command: <<include(scripts/perform_analysis.sh)>>
