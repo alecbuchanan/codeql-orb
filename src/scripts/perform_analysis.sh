@@ -37,7 +37,7 @@ fi
 echo "GIT_URL: $GIT_URL"
 
 # Extract the "organization/repo" format from the GIT_URL environment variable
-repo=$(echo "$GIT_URL" | awk -F'[:/]' '{print $2"/"$3}' | sed 's/\.git$//')
+repo=$(echo "$GIT_URL" | awk -F'[:/]' '{print $4"/"$5}' | sed 's/\.git$//')
 
 # Set the GitHub token from the environment variable
 AUTH_TOKEN=${!PARAM_GITHUB_TOKEN}
