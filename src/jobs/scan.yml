@@ -60,6 +60,12 @@ parameters:
     description: The file name of the SARIF file to be uploaded including the .sarif file extension.
     type: string
     default: ""
+  github_url:
+    description: >
+        The URL of the GitHub repository to which the SARIF file will be uploaded.
+        This should be in the format 'https://github.com/<owner>/<repo>'.
+        It's recommended to use the pipeline.project.git_url parameter.
+    type: string    
 
 executor:
   name: <<parameters.executor_environment>>
@@ -72,5 +78,5 @@ steps:
         install_path: <<parameters.install_path>>
         language_identifier: <<parameters.language_identifier>>
     - perform_analysis:
-        github_url: << pipeline.project.git_url >>
+        github_url: << parameters.github_url >>
 
