@@ -13,7 +13,8 @@ usage:
         - checkout
         - codeql/initialize_codeql:
             language_identifier: "javascript-typescript"
-        - codeql/perform_analysis
+        - codeql/perform_analysis:
+            github_url: << pipeline.project.git_url >>
 
   workflows:
     run_codeql_analysis:
