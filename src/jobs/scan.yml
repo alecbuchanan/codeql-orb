@@ -65,7 +65,7 @@ parameters:
         The URL of the GitHub repository to which the SARIF file will be uploaded.
         This should be in the format 'https://github.com/<owner>/<repo>'.
         It's recommended to use the pipeline.project.git_url parameter.
-    type: string    
+    type: string
 
 executor:
   name: <<parameters.executor_environment>>
